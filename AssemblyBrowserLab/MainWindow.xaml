@@ -1,0 +1,36 @@
+﻿<Window x:Class="AssemblyBrowserLab.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AssemblyBrowserLab"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:AssemblyTreeViewModel/>
+    </Window.DataContext>
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="360"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TreeView Grid.Row="0" Background="AntiqueWhite" FontSize="16">
+            <TreeView.ItemsSource>
+                <Binding Path="TreeNodes" />
+            </TreeView.ItemsSource>
+        </TreeView>
+
+        <Button Grid.Row="1" VerticalContentAlignment="Center" FontSize="18">
+            <Button.Command>
+                <local:OpenDialogCommand/>
+            </Button.Command>
+            <Button.CommandParameter>
+                <Binding />
+            </Button.CommandParameter>
+            Choose assembly
+        </Button> 
+
+    </Grid>
+</Window>
